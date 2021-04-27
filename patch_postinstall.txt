@@ -1,0 +1,28 @@
+--- postinstall.yml	2021-04-27 17:20:10.456008671 +0200
++++ postinstall_new.yml	2021-04-27 17:23:28.569465250 +0200
+@@ -6,6 +6,25 @@
+         creates: /usr/local/munki/managedsoftwareupdate
+     notify: Rsync com.googlecode.munki.managedsoftwareupdate-check.plist
+ 
++-   name: Install python3
++    tags: [python,python3,norminette]
++    shell: installer -pkg /{{ python3_app }} -target /
++
++-   name: Install norminette v3
++    tags: [norminette,update,install]
++    pip:
++        virtualenv: /usr/share/norminette/venv
++        virtualenv_command: /usr/local/bin/python3 -m venv
++        name: norminette
++        state: latest
++
++-   name: Symlink norminette v3
++    tags: [norminette,link]
++    file:
++        src: /usr/share/norminette/venv/bin/norminette
++        dest: /usr/local/bin/norminette
++        state: link
++
+ -   name: Del power file
+     tags: [oups]
+     file:

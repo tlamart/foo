@@ -1,0 +1,12 @@
+--- mojave.yml	2021-04-27 17:20:10.340003157 +0200
++++ mojave_new.yml	2021-04-27 17:22:09.457680263 +0200
+@@ -23,6 +23,9 @@
+ idletime: True
+ screen_size: "5120x2880"
+ 
++python3_dir: Library/Scripts/42/python3/
++python3_app: "{{ python3_dir }}python-3.7.4-macosx10.9-3.7.4.pkg"
++
+ yubikey: False
+ hosts:
+ -   10.51.1.1       cdn.42.fr
